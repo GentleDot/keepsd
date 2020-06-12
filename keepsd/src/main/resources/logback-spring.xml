@@ -10,7 +10,15 @@
 
     <logger name="net.gentledot.keepsd.controller" level="DEBUG"/>
 
-    <root level="info">
+    <!-- log4jdbc -->
+    <logger name="jdbc.sqlonly" level="DEBUG"/>
+    <logger name="jdbc.sqltiming" level="INFO"/>
+    <logger name="jdbc.audit" level="WARN"/>
+    <logger name="jdbc.resultset" level="ERROR"/>
+    <logger name="jdbc.resultsettable" level="DEBUG"/>
+    <logger name="jdbc.connection" level="WARN"/>
+
+    <root level="DEBUG">
         <appender-ref ref="CONSOLE"/>
     </root>
 
