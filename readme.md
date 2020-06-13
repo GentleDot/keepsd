@@ -26,3 +26,29 @@
 - Logback, Junit 5
 - Microsoft Azure App Service (container registry)
 
+
+# 정보 게시물 관리 기능
+## table 및 entity 객체 생성
+- ksd_board 생성
+    ```
+    CREATE TABLE ksd_board(
+        board_no   bigint PRIMARY KEY AUTO_INCREMENT COMMENT '게시물 번호',
+        title      VARCHAR(200)                        NOT NULL COMMENT '게시물 제목',
+        content    TEXT                                NOT NULL COMMENT '게시물 내용',
+        reference  VARCHAR(250)                        NULL COMMENT '출처 정보',
+        created_at TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록일시',
+        updated_at TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일시'
+    );
+    ```
+
+- 생성된 table의 transaction 처리를 위한 entity 객체 생성
+    - Board.class
+        ```
+        private Long boardNo;               // 게시물 번호
+        private String title;               // 게시물 제목
+        private String content;             // 게시물 내용
+        private String reference;           // 출처 정보
+        private LocalDateTime createdAt;    // 등록일시
+        private LocalDateTime updatedAt;    // 수정일시
+        ```
+        - 생성시 제약조건은 test를 통해 정리.
