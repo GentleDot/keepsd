@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
@@ -21,7 +22,9 @@ public class Board {
         checkArgument(StringUtils.isNotBlank(title), "게시물 제목은 필수항목입니다.");
         checkArgument(title.getBytes(StandardCharsets.UTF_8).length <= 200, "게시물 제목은 200 byte 내외로 입력할 수 있습니다.");
         checkArgument(StringUtils.isNotBlank(content), "게시물 내용은 필수항목입니다.");
-        checkArgument(reference.getBytes(StandardCharsets.UTF_8).length <= 250, "출처 정보는 250 byte 내외로 입력할 수 있습니다.");
+        if (reference != null) {
+            checkArgument(reference.getBytes(StandardCharsets.UTF_8).length <= 250, "출처 정보는 250 byte 내외로 입력할 수 있습니다.");
+        }
 
         this.boardNo = boardNo == null ? 0L : boardNo;
         this.title = title;
@@ -43,8 +46,12 @@ public class Board {
         return content;
     }
 
-    public String getReference() {
+    private String getReference() {
         return reference;
+    }
+
+    public Optional<String> getReferenceInfo() {
+        return Optional.ofNullable(reference);
     }
 
     public LocalDateTime getCreatedAt() {
