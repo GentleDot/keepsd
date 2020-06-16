@@ -107,6 +107,13 @@ public class Board {
             this.updatedAt = board.getUpdatedAt();
         }
 
+        public Builder boardNo(Long boardNo) {
+            if (this.boardNo == null) {
+                this.boardNo = boardNo;
+            }
+            return this;
+        }
+
         public Builder title(String title) {
             this.title = title;
             return this;

@@ -23,7 +23,7 @@ class BoardTest {
         assertThat(board.getBoardNo(), is(0L));
         assertThat(board.getTitle(), is("testTitle"));
         assertThat(board.getContent(), is("testContent"));
-//        assertThat(board.getReference(), is("www.test-site.com"));
+        assertThat(board.getReferenceInfo().get(), is("www.test-site.com"));
         assertThat(board.getCreatedAt(), is(notNullValue()));
         assertThat(board.getUpdatedAt(), is(notNullValue()));
     }
