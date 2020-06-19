@@ -1,6 +1,5 @@
 package net.gentledot.keepsd.mapper.board;
 
-import net.gentledot.keepsd.mapper.BoardMapper;
 import net.gentledot.keepsd.models.board.Board;
 import org.junit.jupiter.api.*;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;

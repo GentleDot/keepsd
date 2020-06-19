@@ -1,4 +1,4 @@
-package net.gentledot.keepsd.mapper;
+package net.gentledot.keepsd.mapper.board;
 
 import net.gentledot.keepsd.models.board.Board;
 import org.apache.ibatis.annotations.*;

@@ -1,6 +1,6 @@
-package net.gentledot.keepsd.service;
+package net.gentledot.keepsd.service.board;
 
-import net.gentledot.keepsd.mapper.BoardMapper;
+import net.gentledot.keepsd.mapper.board.BoardMapper;
 import net.gentledot.keepsd.models.board.Board;
 import net.gentledot.keepsd.models.board.request.BoardRequest;
 import org.springframework.stereotype.Service;

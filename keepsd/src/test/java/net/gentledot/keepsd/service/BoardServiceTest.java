@@ -1,12 +1,12 @@
 package net.gentledot.keepsd.service;
 
-import net.gentledot.keepsd.mapper.BoardMapper;
+import net.gentledot.keepsd.mapper.board.BoardMapper;
 import net.gentledot.keepsd.models.board.Board;
 import net.gentledot.keepsd.models.board.request.BoardRequest;
+import net.gentledot.keepsd.service.board.BoardServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
