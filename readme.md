@@ -52,3 +52,60 @@
         private LocalDateTime updatedAt;    // 수정일시
         ```
         - 생성시 제약조건은 test를 통해 정리.
+        
+## Transaction 구현
+### Database 연결 관련 library 의존성 추가
+- Spring JDBC와 MyBatis(Spring Boot Starter) 추가
+```
+org.springframework.boot:spring-boot-starter-jdbc
+org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3
+```
+
+### Transaction 확인을 위한 jdbc logging 추가
+- 의존성 추가
+```
+org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16
+```
+
+- log4jdbc.log4j2.properties 추가
+- logback-spring.xml 추가 (테스트 환경용 logback-test-spring.xml도 추가)
+    ```
+        <!-- log4jdbc -->
+        <logger name="jdbc.sqlonly" level="DEBUG"/>
+        <logger name="jdbc.sqltiming" level="DEBUG"/>
+        <logger name="jdbc.audit" level="WARN"/>
+        <logger name="jdbc.resultset" level="ERROR"/>
+        <logger name="jdbc.resultsettable" level="DEBUG"/>
+        <logger name="jdbc.connection" level="WARN"/>
+    ```
+
+
+### BoardMapper 구현
+- 해당 Mapper의 쿼리는 @Select, @Insert, @Update, @Delete 를 사용하여 작성.
+```
+    int save(Board board);
+
+    List<Board> findAll(Long pageOffset, Integer contentNumber);
+
+    Board findByBoardNo(Long boardNo);
+
+    int update(Board board);
+
+    int delete(Long boardNo);
+```
+
+- Mapper의 동작은 @MyBatisTest를 통해 테스트.
+
+## Service & Controller 구현
+- Service의 기능 상세는 BoardServiceTest에 정리.
+- BoardController의 기능 요약
+    - 게시물 저장: POST /board/insert
+    - 게시물 목록 조회 : GET /board/list?page&num
+        - page: 게시물 목록 조회 시 시작 offset
+        - num: 게시물 목록 조회 시 조회할 게시물 limit
+    - 게시물 조회 : GET /board/{boardNo}
+    - 게시물 수정 : PUT /board/modify/{boardNo}
+    - 게시물 삭제 : DELETE /board/delete/{boardNo}
+    
+- MVC 동작 테스트는 BoardControllerTest를 통해 실행.
+- 추후 통합테스트 진행 후 API Documentation 진행. 
