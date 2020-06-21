@@ -1,9 +1,13 @@
 package net.gentledot.keepsd.models.board;
 
 import com.google.common.base.Objects;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -11,11 +15,27 @@ import java.util.Optional;
 import static com.google.common.base.Preconditions.checkArgument;
 
 public class Board {
+    @NotNull
+    @Schema(example = "1", description = "게시물 등록 시 자동 생성")
     private Long boardNo;
+
+    @NotBlank
+    @Size(min = 1, max = 200)
+    @Schema(example = "testTitle", description = "게시물 제목")
     private String title;
+
+    @NotBlank
+    @Size(min = 1)
+    @Schema(example = "testContent", description = "게시물 내용")
     private String content;
+
+    @Size(max = 250)
     private String reference;
+
+    @Schema(example = "2020-06-21T23:10:00", description = "게시물 생성 일시")
     private LocalDateTime createdAt;
+
+    @Schema(example = "2020-06-21T23:10:00", description = "게시물 수정 일시")
     private LocalDateTime updatedAt;
 
     public Board(Long boardNo, String title, String content, String reference, LocalDateTime createdAt, LocalDateTime updatedAt) {
@@ -50,6 +70,8 @@ public class Board {
         return reference;
     }
 
+    @Size(max = 250)
+    @Schema(example = "http://www.test.com", description = "게시물 참조 시 원본에 대한 내용 입력 (참고문헌, 원본 URI 등)")
     public Optional<String> getReferenceInfo() {
         return Optional.ofNullable(reference);
     }

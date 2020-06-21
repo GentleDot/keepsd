@@ -1,10 +1,16 @@
 package net.gentledot.keepsd.models.board.request;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class BoardRequest {
+    @Schema(example = "testTitle", description = "게시물 제목")
     private String title;
+
+    @Schema(example = "testContent", description = "게시물 내용")
     private String content;
+
+    @Schema(example = "http://www.test.com", description = "게시물 참조 시 원본에 대한 내용 입력 (참고문헌, 원본 URI 등)")
     private String reference;
 
     public BoardRequest() {

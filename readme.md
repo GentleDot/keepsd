@@ -109,3 +109,11 @@ org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16
     
 - MVC 동작 테스트는 BoardControllerTest를 통해 실행.
 - 추후 통합테스트 진행 후 API Documentation 진행. 
+
+## API Documentation
+- springdoc-openapi-ui을 사용하여 API 문서 작성 (Swagger UI)
+    ```
+    org.springdoc:springdoc-openapi-ui:1.4.1
+    ```
+- /api-docs : JSON 형식의 api-document를 확인 가능
+- /keepsd-docs : Swagger UI 기반 API Document 페이지 접속 (테스트 가능)
