@@ -67,17 +67,13 @@ class BoardControllerTest {
     @DisplayName("게시물 목록 조회 요청")
     void getBoardContentListTest() throws Exception {
         // given
-        int page = 1;
-        int contentNum = 10;
+        long page = 1;
+        int contentNum = 5;
 
         // when
-        when(boardService.getBoardcontentList(page, contentNum)).thenReturn(Arrays.asList(getTestBoard()));
+        when(boardService.getBoardcontentList((page - 1), contentNum)).thenReturn(Arrays.asList(getTestBoard()));
 
-//        ResultActions actions = mockMvc.perform(get("/board/list")
-//                .param("page", String.valueOf(page))
-//                .param("num", String.valueOf(contentNum)));
-//        ResultActions actions = mockMvc.perform(get("/board/list?page=" + page + "&contentNum=" + contentNum));
-        ResultActions actions = mockMvc.perform(get("/board/list"));
+        ResultActions actions = mockMvc.perform(get("/board/list?page=" + page + "&num=" + contentNum));
 
         // then
         actions.andDo(print())
@@ -112,7 +108,7 @@ class BoardControllerTest {
 
     @Test
     @DisplayName("게시물 수정 요청")
-    void modifyBoardContent() throws Exception {
+    void modifyBoardContentTest() throws Exception {
         // given
         long boardNo = 1L;
         BoardRequest boardRequest = new BoardRequest();
@@ -140,7 +136,8 @@ class BoardControllerTest {
     }
 
     @Test
-    void deleteBoardContent() throws Exception {
+    @DisplayName("게시물 삭제 요청 테스트")
+    void deleteBoardContentTest() throws Exception {
         // given
         long boardNo = 1L;
 

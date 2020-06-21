@@ -14,7 +14,7 @@ public interface BoardMapper {
     @Select("SELECT board_no, title, content, reference, created_at, updated_at \n" +
             "FROM ksd_board \n" +
             "ORDER BY created_at DESC LIMIT #{contentNumber} OFFSET #{pageOffset}")
-    List<Board> findAll(Integer pageOffset, Integer contentNumber);
+    List<Board> findAll(Long pageOffset, Integer contentNumber);
 
     @Select("SELECT board_no, title, content, reference, created_at, updated_at \n" +
             "FROM ksd_board \n" +

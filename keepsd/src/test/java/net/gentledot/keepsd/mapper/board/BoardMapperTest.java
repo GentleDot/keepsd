@@ -42,7 +42,7 @@ class BoardMapperTest {
     @Order(2)
     @DisplayName("게시물 목록 조회")
     void findAllTest() {
-        List<Board> boardList = boardMapper.findAll(0, 10);
+        List<Board> boardList = boardMapper.findAll(0L, 10);
         // SELECT board_no, title, content, reference, created_at, updated_at FROM ksd_board ORDER BY
         //created_at DESC LIMIT 10 OFFSET 0
 

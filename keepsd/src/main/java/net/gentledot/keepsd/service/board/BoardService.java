@@ -8,7 +8,7 @@ import java.util.List;
 public interface BoardService {
     boolean insertNewBoardContent(BoardRequest request);
 
-    List<Board> getBoardcontentList(Integer page, Integer contentNum);
+    List<Board> getBoardcontentList(Long page, Integer contentNum);
 
     Board getBoardContent(Long boardNo);
 

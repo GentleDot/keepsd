@@ -30,12 +30,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<Board> getBoardcontentList(Integer page, Integer contentNum) {
-        if (page == null || page < 1) {
-            page = 0;
-        }
-
-        return boardMapper.findAll((page - 1), contentNum);
+    public List<Board> getBoardcontentList(Long page, Integer contentNum) {
+        return boardMapper.findAll(page < 1 ? 0L : page, contentNum);
     }
 
     @Override

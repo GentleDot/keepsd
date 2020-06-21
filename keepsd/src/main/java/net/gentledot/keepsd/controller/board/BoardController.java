@@ -1,5 +1,6 @@
 package net.gentledot.keepsd.controller.board;
 
+import net.gentledot.common.util.Pageable;
 import net.gentledot.keepsd.models.board.Board;
 import net.gentledot.keepsd.models.board.request.BoardRequest;
 import net.gentledot.keepsd.models.board.response.ApiResult;
@@ -31,14 +32,8 @@ public class BoardController {
     }
 
     @GetMapping("list")
-    public ApiResult<List<Board>> getBoardContentList(Integer page, Integer contentNum) {
-        if (page == null) {
-            page = 1;
-        }
-        if (contentNum == null) {
-            contentNum = 10;
-        }
-        return OK(boardService.getBoardcontentList(page, contentNum));
+    public ApiResult<List<Board>> getBoardContentList(Pageable pageable) {
+        return OK(boardService.getBoardcontentList(pageable.offset(), pageable.limit()));
     }
 
     @GetMapping("{boardNo}")

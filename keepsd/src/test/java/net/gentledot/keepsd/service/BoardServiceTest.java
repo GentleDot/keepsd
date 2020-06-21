@@ -19,8 +19,7 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
@@ -55,12 +54,12 @@ class BoardServiceTest {
     @DisplayName("게시물 목록 확인")
     void getBoardcontentList() {
         // given
-        int page = 1;
+        long page = 1;
         int num = 10;
 
         // * 실제 반환되는 list는 List<Board>
         // when
-        when(boardMapper.findAll(anyInt(), anyInt())).thenReturn(new ArrayList<>());
+        when(boardMapper.findAll(anyLong(), anyInt())).thenReturn(new ArrayList<>());
         List<Board> boardcontentList = boardService.getBoardcontentList(page, num);
 
         // then
@@ -88,6 +87,7 @@ class BoardServiceTest {
     }
 
     @Test
+    @DisplayName("게시물 수정")
     void modifyBoardContent() {
         // given
         Long boardNo = 1L;
@@ -111,6 +111,7 @@ class BoardServiceTest {
     }
 
     @Test
+    @DisplayName("게시물 삭제")
     void deleteBoardContent() {
         // given
         Long boardNo = 1L;
