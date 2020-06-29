@@ -7,8 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface BoardMapper {
-    @Insert("INSERT INTO ksd_board (board_no, title, content, reference, created_at, updated_at)\n" +
-            "VALUES (#{boardNo}, #{title}, #{content}, #{reference}, #{createdAt}, #{updatedAt})")
+    @Insert("INSERT INTO ksd_board (title, content, reference, created_at, updated_at)\n" +
+            "VALUES (#{title}, #{content}, #{reference}, #{createdAt}, #{updatedAt})")
     int save(Board board);
 
     @Select("SELECT board_no, title, content, reference, created_at, updated_at \n" +
